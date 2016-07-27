@@ -1,6 +1,6 @@
 # BStompClient
 
-[![CI Status](http://img.shields.io/travis/buiminhhuy/BStompClient.svg?style=flat)](https://travis-ci.org/Huy Bui/BStompClient)
+[![CI Status](http://img.shields.io/travis/buiminhhuy/BStompClient.svg?style=flat)](https://travis-ci.org/buiminhhuy/BStompClient)
 [![Version](https://img.shields.io/cocoapods/v/BStompClient.svg?style=flat)](http://cocoapods.org/pods/BStompClient)
 [![License](https://img.shields.io/cocoapods/l/BStompClient.svg?style=flat)](http://cocoapods.org/pods/BStompClient)
 [![Platform](https://img.shields.io/cocoapods/p/BStompClient.svg?style=flat)](http://cocoapods.org/pods/BStompClient)
