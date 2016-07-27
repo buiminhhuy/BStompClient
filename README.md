@@ -22,7 +22,7 @@ pod "BStompClient"
 
 ## Author
 
-Huy Bui, huy.bui@zillacompany.com
+Huy Bui, minhhuybui@gmail.com
 
 ## License
 

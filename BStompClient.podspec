@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'BStompClient'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of BStompClient.'
+  s.summary          = 'STOMP Over WebSocket.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -21,12 +21,12 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/BStompClient'
+  s.homepage         = 'https://github.com/buiminhhuy/BStompClient'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Huy Bui' => 'huy.bui@zillacompany.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/BStompClient.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { 'Huy Bui' => 'minhhuybui@gmail.com' }
+  s.source           = { :git => 'https://github.com/buiminhhuy/BStompClient.git', :tag => s.version.to_s }
+  # s.social_media_url = 'https://twitter.com/buiminhhuy'
 
   s.ios.deployment_target = '8.0'
 
@@ -39,4 +39,5 @@ TODO: Add long description of the pod here.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'SocketRocket', '~> 0.4'
 end
