@@ -70,7 +70,7 @@ public protocol BStompClientDelegate {
 }
 
 public class BStompClient: NSObject, SRWebSocketDelegate {
-    static let sharedInstance = BStompClient()
+    public static let sharedInstance = BStompClient()
     private override init() {}
     
     var socket: SRWebSocket?
