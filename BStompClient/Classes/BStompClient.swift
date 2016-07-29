@@ -73,14 +73,14 @@ public class BStompClient: NSObject, SRWebSocketDelegate {
     public static let sharedInstance = BStompClient()
     private override init() {}
     
-    var socket: SRWebSocket?
+    public var socket: SRWebSocket?
     var sessionId: String?
     var delegate: BStompClientDelegate?
     var connectionHeaders: [String: String]?
-    public var certificateCheckEnabled = true
+    var certificateCheckEnabled = true
     private var urlRequest: NSURLRequest?
     
-    //zillable
+    //imporve here
     var subscriptions: [String: String] = [String: String]()
     var counter = 0
     var clientHeartBeat: String = "20000,0" // client does not want to receive heartbeats from the server
@@ -371,15 +371,15 @@ public class BStompClient: NSObject, SRWebSocketDelegate {
     public func subscribeToDestination(destination: String, withAck ackMode: StompAckMode) {
         var ack = ""
         switch ackMode {
-            case StompAckMode.ClientMode:
-                ack = StompCommands.ackClient
-                break
-            case StompAckMode.ClientIndividual:
-                ack = StompCommands.ackClientIndividual
-                break
-            default:
-                ack = StompCommands.ackAuto
-                break
+        case StompAckMode.ClientMode:
+            ack = StompCommands.ackClient
+            break
+        case StompAckMode.ClientIndividual:
+            ack = StompCommands.ackClientIndividual
+            break
+        default:
+            ack = StompCommands.ackAuto
+            break
         }
         self.counter += 1
         self.subscriptions[destination] = "sub-\(self.counter)"
@@ -450,6 +450,7 @@ public class BStompClient: NSObject, SRWebSocketDelegate {
     
     public func disconnect() {
         var headerToSend = [String: String]()
+        self.subscriptions.removeAll()
         headerToSend[StompCommands.commandDisconnect] = String(Int(NSDate().timeIntervalSince1970))
         sendFrame(StompCommands.commandDisconnect, header: headerToSend, body: nil)
     }
@@ -501,14 +502,14 @@ public class BStompClient: NSObject, SRWebSocketDelegate {
         print("send heart-beat every \(pingTTL) seconds")
         print("expect to receive heart-beats every \(pongTTL) seconds")
         dispatch_async(dispatch_get_main_queue(), {
-                if (pingTTL > 0) {
-                    self.pinger = NSTimer.scheduledTimerWithTimeInterval(pingTTL, target: self, selector: #selector(BStompClient.sendPing(_:)), userInfo: nil, repeats: true)
-                }
-                if (pongTTL > 0) {
-                    self.ponger = NSTimer.scheduledTimerWithTimeInterval(pongTTL, target: self, selector: #selector(BStompClient.checkPong(_:)), userInfo: ["ttl": Int(pongTTL)], repeats: true)
-                }
+            if (pingTTL > 0) {
+                self.pinger = NSTimer.scheduledTimerWithTimeInterval(pingTTL, target: self, selector: #selector(BStompClient.sendPing(_:)), userInfo: nil, repeats: true)
+            }
+            if (pongTTL > 0) {
+                self.ponger = NSTimer.scheduledTimerWithTimeInterval(pongTTL, target: self, selector: #selector(BStompClient.checkPong(_:)), userInfo: ["ttl": Int(pongTTL)], repeats: true)
+            }
         })
-    
+        
     }
-
+    
 }
